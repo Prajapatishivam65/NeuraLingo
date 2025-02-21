@@ -12,6 +12,7 @@ import { Textarea } from "./ui/textarea";
 import ReactDatePicker from "react-datepicker";
 import { Input } from "./ui/input";
 import { useToast } from "@/hooks/use-toast";
+import { Calendar, PlaySquare, UserPlus, Video } from "lucide-react";
 
 const initialValues = {
   dateTime: new Date(),
@@ -71,33 +72,39 @@ const MeetingTypeList = () => {
   return (
     <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
       <HomeCard
-        img="/icons/add-meeting.svg"
+        icon={<Video className="size-8 text-orange-600 dark:text-orange-400" />}
         title="New Meeting"
         description="Start an instant meeting"
         handleClick={() => setMeetingState("isInstantMeeting")}
       />
+
       <HomeCard
-        img="/icons/join-meeting.svg"
+        icon={<UserPlus className="size-8 text-blue-600 dark:text-blue-400" />}
         title="Join Meeting"
         description="via invitation link"
-        className="bg-blue-1"
+        className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/30 border-blue-200 dark:border-blue-700/50"
         handleClick={() => setMeetingState("isJoiningMeeting")}
       />
+
       <HomeCard
-        img="/icons/schedule.svg"
+        icon={
+          <Calendar className="size-8 text-purple-600 dark:text-purple-400" />
+        }
         title="Schedule Meeting"
         description="Plan your meeting"
-        className="bg-purple-1"
+        className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/30 border-purple-200 dark:border-purple-700/50"
         handleClick={() => setMeetingState("isScheduleMeeting")}
       />
+
       <HomeCard
-        img="/icons/recordings.svg"
+        icon={
+          <PlaySquare className="size-8 text-yellow-600 dark:text-yellow-400" />
+        }
         title="View Recordings"
         description="Meeting Recordings"
-        className="bg-yellow-1"
+        className="bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/30 border-yellow-200 dark:border-yellow-700/50"
         handleClick={() => router.push("/recordings")}
       />
-
       {!callDetail ? (
         <MeetingModal
           isOpen={meetingState === "isScheduleMeeting"}
